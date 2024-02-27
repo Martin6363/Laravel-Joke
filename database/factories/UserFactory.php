@@ -17,7 +17,7 @@ class UserFactory extends Factory
      */
     public function definition() {
         $fakerFileName = $this->faker->image(
-            storage_path("app/images"),
+            storage_path("app/images/"),
             800,
             600
         );

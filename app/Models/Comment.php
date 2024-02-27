@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'message',
+        'user_id',
+        'post_id',
+        'replay_id'
+    ];
 }

@@ -16,9 +16,14 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->longText('message');
-            $table->bigInteger('user_id');
-            $table->bigInteger('post_id');
-            $table->bigInteger('replay_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('replay_id')->nullable();
+
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            $table->foreign('replay_id')->references('id')->on('comments')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
