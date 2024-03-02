@@ -22,7 +22,7 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center w-full min-h-screen sm:items-center py-4 sm:pt-0 overflow-hidden" style="background: linear-gradient(90deg, rgba(0,89,107,1) 0%, rgba(9,9,121,1) 44%, rgba(2,0,36,1) 100%);">
             @if (Route::has('login'))
-                <div class="w-full hidden fixed top-0 right-0 px-6 py-4 sm:block bg-gray-100 dark:bg-gray-900 login_box">
+                <div class="w-full hidden fixed top-0 right-0 px-6 py-4 sm:block login_box">
                     @auth
                         <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-200 underline">Dashboard</a>
                     @else
@@ -34,8 +34,19 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="w-full mx-auto overflow-hidden">
+            <div class="box">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="w-full mx-auto overflow-hidden welcome_content_box">
                 <div class="content_image_cont">
                     <img src="{{ asset('assets/images/welcome_page-img.png') }}" class="welcome_image" draggable="false" alt="">
                 </div>

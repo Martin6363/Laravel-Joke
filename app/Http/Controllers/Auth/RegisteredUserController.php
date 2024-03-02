@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Laravolt\Avatar\Facade as Avatar;
 
 class RegisteredUserController extends Controller
 {
@@ -37,6 +38,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
         
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -44,6 +46,11 @@ class RegisteredUserController extends Controller
             'dob' => $request->dateOfBirth,
             'password' => Hash::make($request->password),
         ]);
+        
+        $avatar = Avatar::create($request->name);
+        $avatar->save(storage_path('app/public/avatar/avatar-' . $user->id . '.png'));
+        $user->avatar = 'avatar-' . $user->id . '.png';
+        $user->save();
 
         event(new Registered($user));
 
